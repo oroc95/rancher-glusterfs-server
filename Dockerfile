@@ -26,7 +26,7 @@ ENV GLUSTER_VOL=ranchervol \
 VOLUME ["${GLUSTER_BRICK_PATH}"]
 VOLUME /var/lib/glusterd
 
-RUN mkdir -p /var/log/supervisor /var/run/gluster \
+RUN mkdir -p /var/log/supervisor /var/run/gluster && \
     chmod +x /usr/local/bin/*.sh
 
 CMD ["/usr/local/bin/run.sh"]
