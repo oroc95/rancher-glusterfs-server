@@ -1,5 +1,4 @@
 FROM ubuntu:16.04
-
 MAINTAINER olivier rochon <orochon@free.fr>
 
 ENV TERM=linux
@@ -12,6 +11,9 @@ RUN add-apt-repository -y ppa:gluster/glusterfs-3.9 && \
     apt-get update && \
     apt-get install -y glusterfs-server supervisor
 
+# Add Tini
+ENV TINI_VERSION v0.13.2
+ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /usr/local/bin
 
 ADD ./bin /usr/local/bin
 ADD ./etc/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
@@ -27,6 +29,8 @@ VOLUME ["${GLUSTER_BRICK_PATH}"]
 VOLUME /var/lib/glusterd
 
 RUN mkdir -p /var/log/supervisor /var/run/gluster && \
-    chmod +x /usr/local/bin/*.sh
+    chmod +x /usr/local/bin/*.sh && \
+    chmod +x /usr/local/bin/tini
 
 CMD ["/usr/local/bin/run.sh"]
+ENTRYPOINT ["/usr/local/bin/tini", "--"]
