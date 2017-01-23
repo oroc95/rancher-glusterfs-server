@@ -3,6 +3,7 @@ FROM ubuntu:14.04
 MAINTAINER olivier rochon <orochon@free.fr>
 
 RUN apt-get update && \
+    sed -i 's/^mesg n$/tty -s \&\& mesg n/g' /root/.profile \
     apt-get install -y python-software-properties software-properties-common
     
 RUN add-apt-repository -y ppa:gluster/glusterfs-3.7 && \
