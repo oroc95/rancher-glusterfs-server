@@ -11,10 +11,6 @@ RUN add-apt-repository -y ppa:gluster/glusterfs-3.9 && \
     apt-get update && \
     apt-get install -y glusterfs-server supervisor
 
-# Add Tini
-ENV TINI_VERSION v0.13.2
-ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /usr/local/bin
-
 ADD ./bin /usr/local/bin
 ADD ./etc/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
@@ -29,8 +25,13 @@ VOLUME ["${GLUSTER_BRICK_PATH}"]
 VOLUME /var/lib/glusterd
 
 RUN mkdir -p /var/log/supervisor /var/run/gluster && \
-    chmod +x /usr/local/bin/*.sh && \
-    chmod +x /usr/local/bin/tini
+    chmod +x /usr/local/bin/*.sh
 
 CMD ["/usr/local/bin/run.sh"]
+
+# Add Tini
+ENV TINI_VERSION v0.13.2
+ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /usr/local/bin
+RUN     chmod +x /usr/local/bin/tini
+
 ENTRYPOINT ["/usr/local/bin/tini", "--"]
