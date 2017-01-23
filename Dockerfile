@@ -2,7 +2,10 @@ FROM ubuntu:16.04
 
 MAINTAINER olivier rochon <orochon@free.fr>
 
+ENV TERM=linux
+
 RUN apt-get update && \
+    apt-utils && \
     apt-get install -y python-software-properties software-properties-common
     
 RUN add-apt-repository -y ppa:gluster/glusterfs-3.9 && \
