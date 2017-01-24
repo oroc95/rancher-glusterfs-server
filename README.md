@@ -4,8 +4,8 @@ Gluster FS Cluster for being used with Rancher Server
 ## Create a stack gluster
 
 ### Add un service gluster01
-- Enter the following information
-* Name: gluster01
+* Enter the following information
+> * Name: gluster01
 * Image: oroc95/rancher-glusterfs-server:latest
 
 - Expand Advanced Options and follow these steps:
