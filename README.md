@@ -19,6 +19,7 @@ Gluster FS Cluster for being used with Rancher Server
     * enable reuse the IP, when upgrading or replace instance
   * Security/Host section
     * Enable Give the container full access to the host checkbox
+
 ### Add un service gluster02
 * Enter the following information
   * Name: gluster02
