@@ -15,6 +15,8 @@ Gluster FS Cluster for being used with Rancher Server
     * gluster01-config:/var/lib/glusterd
   * Networking section
     * Choose Managed Network on Docker0
+    * fix the IP under ipsec rancher : 10.42.33.9
+    * enable reuse the IP, when upgrading or replace instance
   * Security/Host section
     * Enable Give the container full access to the host checkbox
 ### Add un service gluster02
@@ -30,5 +32,7 @@ Gluster FS Cluster for being used with Rancher Server
     * gluster02-config:/var/lib/glusterd
   * Networking section
     * Choose Managed Network on Docker0
+    * fix the IP under ipsec rancher : 10.42.182.55
+    *  enable reuse the IP, when upgrading or replace instance
   * Security/Host section
     * Enable Give the container full access to the host checkbox
