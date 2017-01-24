@@ -9,7 +9,7 @@ RUN apt-get update && \
     
 RUN add-apt-repository -y ppa:gluster/glusterfs-3.9 && \
     apt-get update && \
-    apt-get install -y glusterfs-server supervisor
+    apt-get install -y glusterfs-server supervisor iputils-ping
 
 ADD ./bin /usr/local/bin
 ADD ./etc/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
